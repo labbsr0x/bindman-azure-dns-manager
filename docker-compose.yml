@@ -1,0 +1,23 @@
+# docker stack deploy -c docker-compose.yml bindman-dns-manager
+version: '3.5'
+
+services:
+
+  bindman-azure-dns-manager:
+    image: labbsr0x/bindman-azure-dns-manager:0.0.1
+    build: .
+    volumes:
+      - data:/data
+    ports:
+      - 7070:7070
+    environment:
+      - BINDMAN_AZURE_SUBSCRIPTION_ID
+      - BINDMAN_AZURE_CLIENT_ID
+      - BINDMAN_AZURE_CLIENT_SECRET
+      - BINDMAN_AZURE_TENANT_ID
+      - BINDMAN_AZURE_RESOURCE_GROUP
+      - BINDMAN_DNS_REMOVAL_DELAY
+      - BINDMAN_MODE=DEBUG
+
+volumes:
+  data:
