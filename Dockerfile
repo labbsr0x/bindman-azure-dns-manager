@@ -1,13 +1,15 @@
 # BUILD
 FROM golang:1.11-alpine as builder
 
-RUN apk add --no-cache git mercurial 
+RUN apk --no-cache --no-progress add git
 
-ENV p $GOPATH/src/github.com/labbsr0x/bindman-azure-dns-manager
+WORKDIR $GOPATH/src/github.com/labbsr0x/bindman-azure-dns-manager
 
-ADD ./ ${p}
-WORKDIR ${p}
-RUN go get -v ./...
+COPY go.mod go.sum ./
+ENV GO111MODULE=on
+RUN go mod download
+
+COPY . .
 
 RUN GIT_COMMIT=$(git rev-parse --short HEAD 2> /dev/null || true) \
  && BUILDTIME=$(TZ=UTC date -u '+%Y-%m-%dT%H:%M:%SZ') \
@@ -21,7 +23,10 @@ RUN GIT_COMMIT=$(git rev-parse --short HEAD 2> /dev/null || true) \
 # PKG
 FROM alpine:latest
 
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+RUN apk update \
+    && apk add --no-cache ca-certificates \
+    && update-ca-certificates
+
 COPY --from=builder /bindman-azure-dns-manager /go/bin/
 
 VOLUME [ "/data" ]
