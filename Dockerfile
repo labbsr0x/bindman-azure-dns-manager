@@ -1,5 +1,5 @@
 # BUILD
-FROM golang:1.11-alpine as builder
+FROM golang:1.13-alpine3.10 as builder
 
 RUN apk --no-cache --no-progress add git
 
@@ -21,7 +21,7 @@ RUN GIT_COMMIT=$(git rev-parse --short HEAD 2> /dev/null || true) \
     -a -installsuffix cgo -o /bindman-azure-dns-manager src/main.go
 
 # PKG
-FROM alpine:latest
+FROM alpine:3.10
 
 RUN apk update \
     && apk add --no-cache ca-certificates \
