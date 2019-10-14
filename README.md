@@ -16,18 +16,20 @@ A store of records being managed is needed. Hence, a `/data` volume must be mapp
 
 ## Environment variables
 
-1. `mandatory` **BINDMAN_AZURE_RESOURCE_GROUP**: specifies the app Resource Group to use
+1. `mandatory` **BINDMAN_AZURE_RESOURCE_GROUP**: specifies the app Resource Group to use.
 
-2. `mandatory` **BINDMAN_AZURE_SUBSCRIPTION_ID**: specifies the subscription to use
+2. `mandatory` **BINDMAN_AZURE_SUBSCRIPTION_ID**: specifies the subscription to use.
 
-3. `mandatory` **BINDMAN_AZURE_CLIENT_ID**: specifies the app client ID to use
+3. `mandatory` **BINDMAN_AZURE_CLIENT_ID**: specifies the app client ID to use.
 
-4. `mandatory` **BINDMAN_AZURE_CLIENT_SECRET**: specifies the app secret to use
+4. `mandatory` **BINDMAN_AZURE_CLIENT_SECRET**: specifies the app secret to use.
 
-5. `mandatory` **BINDMAN_AZURE_TENANT_ID**: specifies the Tenant to which to authenticate
+5. `mandatory` **BINDMAN_AZURE_TENANT_ID**: specifies the Tenant to which to authenticate.
 
-6. `optional` **BINDMAN_DNS_TTL**: the dns recording rule expiration time (or time-to-live). By default, the TTL is **3600 seconds**.
+6. `mandatory` **BINDMAN_ZONE**: the zone that the bindman instance is responsible for managing.
 
-7. `optional` **BINDMAN_DNS_REMOVAL_DELAY**: the delay in minutes to be applied to the removal of an DNS entry. The default is 10 minutes. This is to guarantee that in fact the removal should be processed.
+7. `optional` **BINDMAN_DNS_TTL**: the dns recording rule expiration time (or time-to-live). By default, the TTL is **3600 seconds**.
 
-8. `optional` **BINDMAN_MODE**: let the runtime know if the DEBUG mode is activated; useful for debugging the intermediary files created for sending `nsupdate` commands. Possible values: `DEBUG|PROD`. Empty defaults to `PROD`.
+8. `optional` **BINDMAN_DNS_REMOVAL_DELAY**: the delay in minutes to be applied to the removal of an DNS entry. The default is 10 minutes. This is to guarantee that in fact the removal should be processed.
+
+9. `optional` **BINDMAN_MODE**: let the runtime know if the DEBUG mode is activated; useful for debugging the intermediary files created for sending `nsupdate` commands. Possible values: `DEBUG|PROD`. Empty defaults to `PROD`.
