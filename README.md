@@ -1,6 +1,7 @@
 # Bindman Azure DNS Manager
 ![Build Status](https://travis-ci.com/labbsr0x/bindman-azure-dns-manager.svg?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/labbsr0x/bindman-azure-dns-manager)](https://goreportcard.com/report/github.com/labbsr0x/bindman-azure-dns-manager)
+[![Docker Pulls](https://img.shields.io/docker/pulls/labbsr0x/bindman-azure-dns-manager.svg)](https://hub.docker.com/r/labbsr0x/bindman-azure-dns-manager/)
 
 This repository defines the component that manages Azure DNS Zone.
 
